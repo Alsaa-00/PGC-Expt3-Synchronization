@@ -2,17 +2,17 @@
 
 # PGC LAB 5
 
-## Synchronization Mechanisms in Parallel Programs
+## SYNCHRONIZATION MECHANISMS IN PARALLEL PROGRAMS
 
 **Implementation, Analysis and Performance Evaluation of Thread Synchronization Techniques**
 
 <br>
 
-![C](https://img.shields.io/badge/Language-C-blue?style=for-the-badge\&logo=c)
-![Linux](https://img.shields.io/badge/Platform-Ubuntu-orange?style=for-the-badge\&logo=ubuntu)
-![GCC](https://img.shields.io/badge/Compiler-GCC-green?style=for-the-badge\&logo=gnu)
-![OpenMP](https://img.shields.io/badge/Parallelism-OpenMP-red?style=for-the-badge)
-![POSIX](https://img.shields.io/badge/Threads-POSIX-lightgrey?style=for-the-badge)
+![Language](https://img.shields.io/badge/Language-C-blue?style=for-the-badge\&logo=c)
+![Platform](https://img.shields.io/badge/Platform-Ubuntu-orange?style=for-the-badge\&logo=ubuntu)
+![Compiler](https://img.shields.io/badge/Compiler-GCC-green?style=for-the-badge\&logo=gnu)
+![Parallelism](https://img.shields.io/badge/Parallelism-OpenMP-red?style=for-the-badge)
+![Threads](https://img.shields.io/badge/Threads-POSIX-lightgrey?style=for-the-badge)
 
 <br>
 
@@ -22,27 +22,27 @@
 
 ---
 
-## 1. Project Overview
+# 1. Project Overview
 
 Synchronization is an essential concept in parallel programming where multiple threads execute simultaneously and access shared resources.
 
 When multiple threads attempt to modify the same shared variable without proper coordination, race conditions may occur, resulting in incorrect outputs and data inconsistency.
 
-This experiment implements and analyzes different synchronization mechanisms using C, OpenMP and POSIX threads.
+This experiment focuses on implementing and analyzing different synchronization mechanisms using C, OpenMP and POSIX threads.
 
-The experiment evaluates the mechanisms based on:
+The experiment evaluates different synchronization techniques based on:
 
 * Correctness of execution
 * Execution time
 * Thread synchronization
-* Resource protection
+* Shared resource protection
 * Performance and scalability
 
 The primary objective is to understand how synchronization mechanisms maintain data consistency while balancing execution performance.
 
 ---
 
-## 2. Objectives
+# 2. Objectives
 
 1. Understand the importance of synchronization in parallel programming.
 2. Implement race conditions using shared variables.
@@ -54,17 +54,18 @@ The primary objective is to understand how synchronization mechanisms maintain d
 
 ---
 
-## 3. System Architecture
+# 3. System Architecture
 
 The experiment follows a shared-memory parallel programming architecture.
 
 Multiple threads access a common shared counter. Depending on the synchronization mechanism used, access to the shared resource is either controlled or left unprotected.
 
-### Architecture Diagram
+## 3.1 Architecture Diagram
 
 ```mermaid
 flowchart TD
     A["Parallel Program"] --> B["Thread Creation"]
+
     B --> C["Thread 0"]
     B --> D["Thread 1"]
     B --> E["Thread 2"]
@@ -81,13 +82,13 @@ flowchart TD
     I --> J["Correctness Verification"]
     J --> K["Execution Time Analysis"]
 
-    style A fill:#58132b,color:#fff,stroke:#8d3154
+    style A fill:#58132b,color:#fff,stroke:#a34b6c
     style G fill:#173b63,color:#fff,stroke:#4d91cf
     style H fill:#176b50,color:#fff,stroke:#43b58a
-    style K fill:#58132b,color:#fff,stroke:#8d3154
+    style K fill:#58132b,color:#fff,stroke:#a34b6c
 ```
 
-### Synchronization Workflow
+## 3.2 Synchronization Workflow
 
 1. The program creates multiple threads.
 2. Each thread performs operations on a shared counter.
@@ -98,9 +99,9 @@ flowchart TD
 
 ---
 
-## 4. Synchronization Mechanisms
+# 4. Synchronization Mechanisms Implemented
 
-### 4.1 Race Condition – No Synchronization
+## 4.1 Race Condition – No Synchronization
 
 **Source File:** `race.c`
 
@@ -120,13 +121,14 @@ for(long i = 0; i < 10000000; i++)
 }
 ```
 
-**Observation:**
+**Observations:**
 
 * No synchronization overhead.
 * Fast execution.
 * Incorrect and unpredictable results with multiple threads.
+* Demonstrates the importance of protecting shared resources.
 
-### 4.2 Critical Section
+## 4.2 Critical Section
 
 **Source File:** `critical.c`
 
@@ -141,14 +143,14 @@ It uses the OpenMP directive:
 }
 ```
 
-**Observation:**
+**Observations:**
 
 * Prevents simultaneous updates.
 * Guarantees correct counter values.
 * Introduces waiting overhead.
 * Performance may decrease as the number of threads increases.
 
-### 4.3 Atomic Operation
+## 4.3 Atomic Operation
 
 **Source File:** `atomic.c`
 
@@ -161,14 +163,14 @@ It uses the OpenMP directive:
 counter++;
 ```
 
-**Observation:**
+**Observations:**
 
-* Prevents race conditions during the update.
+* Prevents race conditions during individual updates.
 * Maintains data consistency.
 * Uses lightweight synchronization.
 * Generally performs better than critical sections for simple updates.
 
-### 4.4 Barrier Synchronization
+## 4.4 Barrier Synchronization
 
 **Source File:** `barrier.c`
 
@@ -184,14 +186,14 @@ printf("Thread before barrier\n");
 printf("Thread after barrier\n");
 ```
 
-**Observation:**
+**Observations:**
 
 * Coordinates multiple threads.
 * Ensures synchronization between execution phases.
 * Does not directly protect shared variables.
 * Waiting time depends on the slowest thread.
 
-### 4.5 Semaphore Synchronization
+## 4.5 Semaphore Synchronization
 
 **Source File:** `semaphore.c`
 
@@ -199,7 +201,7 @@ A semaphore is a synchronization mechanism used to control access to shared reso
 
 This experiment uses a binary semaphore with an initial value of 1.
 
-Important functions:
+**Important functions:**
 
 | Function        | Purpose                   |
 | --------------- | ------------------------- |
@@ -218,13 +220,13 @@ counter++;
 sem_post(&semaphore);
 ```
 
-**Observation:**
+**Observations:**
 
 * Prevents simultaneous access to protected data.
 * Maintains correct counter values.
 * Introduces synchronization overhead.
 
-### 4.6 Performance Comparison
+## 4.6 Performance Comparison
 
 **Source File:** `compare_sync.c`
 
@@ -251,7 +253,9 @@ The final counter is compared against the expected value of 10,000,000 to determ
 
 ---
 
-## 5. Program Execution Flow
+# 5. Program Execution Flow
+
+The following flowchart represents the general execution process followed by the comparison program.
 
 ```mermaid
 flowchart TD
@@ -275,13 +279,13 @@ flowchart TD
 
 ---
 
-## 6. Technology Stack
+# 6. Technology Stack
 
 | Technology         | Application                            |
 | ------------------ | -------------------------------------- |
-| C                  | Program implementation                 |
-| Ubuntu Linux       | Operating system                       |
-| GCC                | C compiler                             |
+| C Programming      | Program implementation                 |
+| Ubuntu Linux       | Execution environment                  |
+| GCC Compiler       | Compilation of C programs              |
 | OpenMP             | Parallel execution and synchronization |
 | POSIX Threads      | Thread creation and management         |
 | Semaphore Library  | Shared resource protection             |
@@ -289,27 +293,23 @@ flowchart TD
 
 ---
 
-## 7. Project Structure
+# 7. Project Structure
+
+The repository is organized into source programs and execution results.
 
 ```text
 PGC-LAB5-SYNCHRONIZATION/
 │
 ├── race.c
-│
 ├── critical.c
-│
 ├── atomic.c
-│
 ├── barrier.c
-│
 ├── semaphore.c
-│
 ├── compare_sync.c
 │
 ├── README.md
 │
 └── results/
-    │
     ├── 00_ubuntu_update_and_gcc_openmp_setup.png
     ├── 01_gcc_installation_and_openmp_verification.png
     ├── 02_environment_setup_and_race_critical_execution.png
@@ -321,33 +321,35 @@ PGC-LAB5-SYNCHRONIZATION/
 
 ---
 
-## 8. Installation and Configuration
+# 8. Installation and Configuration
 
-### Step 1: Update Ubuntu
+The experiment is implemented and executed in an Ubuntu Linux environment.
+
+## Step 1: Update Ubuntu Packages
 
 ```bash
 sudo apt update
 ```
 
-### Step 2: Install GCC and Build Tools
+## Step 2: Install GCC and Build Tools
 
 ```bash
 sudo apt install build-essential -y
 ```
 
-### Step 3: Verify GCC
+## Step 3: Verify GCC Installation
 
 ```bash
 gcc --version
 ```
 
-### Step 4: Verify OpenMP
+## Step 4: Verify OpenMP Support
 
 ```bash
 echo '#include <omp.h>' | gcc -E -fopenmp -xc - > /dev/null && echo "OpenMP OK"
 ```
 
-Expected output:
+**Expected Output:**
 
 ```text
 OpenMP OK
@@ -355,44 +357,46 @@ OpenMP OK
 
 ---
 
-## 9. Compilation and Execution
+# 9. Compilation and Execution
 
-### Race Condition
+The following commands are used to compile and execute the individual programs.
+
+## 9.1 Race Condition
 
 ```bash
 gcc race.c -fopenmp -o race
 OMP_NUM_THREADS=4 ./race
 ```
 
-### Critical Section
+## 9.2 Critical Section
 
 ```bash
 gcc critical.c -fopenmp -o critical
 OMP_NUM_THREADS=4 ./critical
 ```
 
-### Atomic Operation
+## 9.3 Atomic Operation
 
 ```bash
 gcc atomic.c -fopenmp -o atomic
 OMP_NUM_THREADS=4 ./atomic
 ```
 
-### Barrier
+## 9.4 Barrier
 
 ```bash
 gcc barrier.c -fopenmp -o barrier
 OMP_NUM_THREADS=4 ./barrier
 ```
 
-### Semaphore
+## 9.5 Semaphore
 
 ```bash
 gcc semaphore.c -pthread -o semaphore
 ./semaphore
 ```
 
-### Performance Comparison
+## 9.6 Performance Comparison
 
 ```bash
 gcc compare_sync.c -fopenmp -o compare_sync
@@ -401,21 +405,21 @@ gcc compare_sync.c -fopenmp -o compare_sync
 
 ---
 
-## 10. Experimental Configuration
+# 10. Experimental Configuration
 
-The performance comparison uses the following configuration:
+The performance comparison program uses the following configuration.
 
-| Parameter               | Configuration                |
-| ----------------------- | ---------------------------- |
-| Programming Language    | C                            |
-| Total Iterations        | 10,000,000                   |
-| Thread Counts           | 1, 2, 4, 8                   |
-| Shared Resource         | Counter Variable             |
-| Synchronization Methods | None, Critical, Atomic, Lock |
-| Performance Metric      | Execution Time               |
-| Correctness Metric      | Final Counter Value          |
+| Parameter                | Configuration                |
+| ------------------------ | ---------------------------- |
+| Programming Language     | C                            |
+| Total Counter Increments | 10,000,000                   |
+| Thread Counts            | 1, 2, 4, 8                   |
+| Shared Resource          | Counter Variable             |
+| Synchronization Methods  | None, Critical, Atomic, Lock |
+| Performance Metric       | Execution Time (Seconds)     |
+| Correctness Metric       | Final Counter Value          |
 
-**Expected Correct Counter:**
+**Expected Correct Final Counter:**
 
 ```text
 10000000
@@ -423,11 +427,11 @@ The performance comparison uses the following configuration:
 
 ---
 
-## 11. Performance Analysis
+# 11. Performance Analysis
 
-The following values are taken from the actual terminal execution.
+The following results are taken from the actual terminal execution of the comparison program.
 
-### Experimental Results
+## 11.1 Experimental Results
 
 | Mechanism | Threads | Final Count | Correctness | Time (s) |
 | --------- | ------: | ----------: | ----------- | -------: |
@@ -448,11 +452,13 @@ The following values are taken from the actual terminal execution.
 | Atomic    |       8 |    10000000 | Correct     |   0.0759 |
 | Lock      |       8 |    10000000 | Correct     |   0.9673 |
 
-### Execution Time Comparison
+## 11.2 Execution Time Comparison
+
+The following chart represents the execution time of all four mechanisms across different thread counts.
 
 ```mermaid
 xychart-beta
-    title "Execution Time Comparison (Seconds)"
+    title "Execution Time Comparison"
     x-axis ["1 Thread", "2 Threads", "4 Threads", "8 Threads"]
     y-axis "Time (Seconds)" 0 --> 1.0
     line [0.0042, 0.0078, 0.0090, 0.0093]
@@ -461,24 +467,42 @@ xychart-beta
     line [0.0896, 0.3154, 0.6815, 0.9673]
 ```
 
-**Graph series order:**
+**Series order:**
 
 1. None
 2. Critical
 3. Atomic
 4. Lock
 
-### Performance Observations
+## 11.3 Performance Observations
 
-* No synchronization has the lowest execution time but produces incorrect results with multiple threads.
-* Critical sections maintain correctness but have higher execution time due to serialization.
-* Atomic operations provide correct results with comparatively lower overhead.
-* Lock-based synchronization maintains correctness but experiences increased contention as the thread count increases.
-* The performance of synchronization mechanisms depends on the workload and execution environment.
+**Race Condition:**
+
+* Has the lowest execution time.
+* Does not guarantee correct results with multiple threads.
+* Lost updates increase with the number of threads in the observed runs.
+
+**Critical Section:**
+
+* Maintains correctness.
+* Has higher execution time due to serialization.
+* Performance decreases as thread contention increases.
+
+**Atomic Operation:**
+
+* Maintains correctness.
+* Has relatively low synchronization overhead.
+* Demonstrates the best performance among the synchronized mechanisms in this experiment.
+
+**Lock:**
+
+* Maintains correctness.
+* Introduces waiting and locking overhead.
+* Experiences increased contention as the number of threads increases.
 
 ---
 
-## 12. Correctness and Scalability Analysis
+# 12. Correctness and Scalability Analysis
 
 | Mechanism | Correctness                     | Relative Performance | Scalability      |
 | --------- | ------------------------------- | -------------------- | ---------------- |
@@ -491,68 +515,86 @@ xychart-beta
 
 ### Key Findings
 
-**Correctness:** Atomic, Critical, Lock and Semaphore mechanisms maintain correct counter values in their respective implementations.
+**Correctness:** Critical sections, atomic operations, locks and semaphores maintain correct counter values in their respective implementations.
 
 **Performance:** Atomic operations show better performance than critical sections and locks in the observed comparison.
 
-**Scalability:** Increasing thread count does not necessarily improve performance. Synchronization overhead and contention can reduce the benefits of parallel execution.
+**Scalability:** Increasing the number of threads does not necessarily improve performance. Synchronization overhead and contention can reduce the benefits of parallel execution.
 
 ---
 
-## 13. Execution Screenshots
+# 13. Execution Screenshots
 
-All screenshots below are captured from the actual Ubuntu terminal during implementation and execution.
+All screenshots below are captured from the actual Ubuntu terminal during the implementation and execution of the experiment.
 
-### Environment Setup and OpenMP Verification
+## 13.1 Ubuntu Environment Setup
 
-![Ubuntu Setup](results/00_ubuntu_update_and_gcc_openmp_setup.png)
+Shows Ubuntu package updates and initial environment preparation.
 
-### GCC Installation and OpenMP Verification
+![Ubuntu Environment Setup](./results/00_ubuntu_update_and_gcc_openmp_setup.png)
 
-![GCC Verification](results/01_gcc_installation_and_openmp_verification.png)
+## 13.2 GCC Installation and OpenMP Verification
 
-### Race Condition and Critical Section Execution
+Shows GCC installation, compiler version verification and OpenMP support verification.
 
-![Race and Critical](results/02_environment_setup_and_race_critical_execution.png)
+![GCC and OpenMP Verification](./results/01_gcc_installation_and_openmp_verification.png)
 
-### Race, Critical and Atomic Execution
+## 13.3 Environment Setup and Race/Critical Execution
 
-![Synchronization Execution](results/03_race_critical_atomic_execution.png)
+Shows Lab5 directory creation, program compilation and execution of race condition and critical section programs.
 
-### Race, Critical, Atomic and Barrier Execution
+![Environment and Execution](./results/02_environment_setup_and_race_critical_execution.png)
 
-![Barrier Execution](results/04_race_critical_atomic_barrier_execution.png)
+## 13.4 Race Condition, Critical Section and Atomic Operation
 
-### Critical, Atomic, Barrier and Semaphore Execution
+Shows the compilation and execution of race, critical and atomic synchronization programs.
 
-![Semaphore Execution](results/05_critical_atomic_barrier_semaphore_execution.png)
+![Race Critical Atomic](./results/03_race_critical_atomic_execution.png)
 
-### Final Performance Comparison
+## 13.5 Barrier Synchronization Execution
 
-![Performance Comparison](results/06_performance_comparison_1_2_4_8_threads.png)
+Shows thread execution before and after the barrier synchronization point.
+
+![Barrier Execution](./results/04_race_critical_atomic_barrier_execution.png)
+
+## 13.6 Semaphore Synchronization Execution
+
+Shows the execution of critical, atomic, barrier and semaphore programs, including the final semaphore counter.
+
+![Semaphore Execution](./results/05_critical_atomic_barrier_semaphore_execution.png)
+
+## 13.7 Final Performance Comparison
+
+Shows the final comparison of None, Critical, Atomic and Lock mechanisms using 1, 2, 4 and 8 threads.
+
+![Performance Comparison](./results/06_performance_comparison_1_2_4_8_threads.png)
 
 ---
 
-## 14. Conclusion
+# 14. Conclusion
 
 This experiment successfully demonstrates the implementation and analysis of different synchronization mechanisms in parallel programming.
 
-The experiment highlights the problems associated with race conditions and demonstrates how critical sections, atomic operations, barriers, locks and semaphores help coordinate thread execution and protect shared resources.
+Race conditions can produce incorrect results when multiple threads access shared variables without proper coordination.
 
-The performance comparison shows that synchronization mechanisms have different execution costs depending on the number of threads and the workload.
+Critical sections, atomic operations, locks and semaphores help maintain data consistency, while barriers coordinate the execution of multiple threads.
+
+The performance comparison shows that different synchronization mechanisms have different execution costs depending on the number of threads and the workload.
 
 Atomic operations provide a good balance between correctness and performance for simple shared-variable updates, while critical sections, locks and semaphores provide controlled access to shared resources.
 
-Overall, the experiment provides practical understanding of thread synchronization, data consistency, execution time and scalability in shared-memory parallel systems.
+Overall, this experiment provides practical understanding of thread synchronization, data consistency, execution time and scalability in shared-memory parallel systems.
 
 ---
 
 <div align="center">
 
-### PGC LAB 5 – SYNCHRONIZATION
+## PGC LAB 5 – SYNCHRONIZATION
 
 **Analyze Synchronization Mechanisms in Parallel Programs**
 
-*Parallel Programming and Computing Laboratory*
+Parallel Programming and Computing Laboratory
+
+**End of Experiment**
 
 </div>

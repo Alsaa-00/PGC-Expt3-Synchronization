@@ -1,6 +1,6 @@
 <div align="center">
 
-
+# PGC LAB 5
 
 ## SYNCHRONIZATION MECHANISMS IN PARALLEL PROGRAMS
 
@@ -298,7 +298,7 @@ flowchart TD
 The repository is organized into source programs and execution results.
 
 ```text
-PGC-LAB5-SYNCHRONIZATION/
+PGC-Synchronization/
 │
 ├── race.c
 ├── critical.c
@@ -310,13 +310,13 @@ PGC-LAB5-SYNCHRONIZATION/
 ├── README.md
 │
 └── results/
-    ├── 00_ubuntu_update_and_gcc_openmp_setup.png
-    ├── 01_gcc_installation_and_openmp_verification.png
-    ├── 02_environment_setup_and_race_critical_execution.png
-    ├── 03_race_critical_atomic_execution.png
-    ├── 04_race_critical_atomic_barrier_execution.png
-    ├── 05_critical_atomic_barrier_semaphore_execution.png
-    └── 06_performance_comparison_1_2_4_8_threads.png
+    ├── 00_ubuntu_update_and_gcc_openmp_setup.png.jpeg
+    ├── 01_gcc_installation_and_openmp_verification.png.jpeg
+    ├── 02_environment_setup_and_race_critical_execution.png.jpeg
+    ├── 03_race_critical_atomic_execution.png.jpeg
+    ├── 04_race_critical_atomic_barrier_execution.png.jpeg
+    ├── 05_critical_atomic_barrier_semaphore_execution.png.jpeg
+    └── 06_performance_comparison_1_2_4_8_threads.png.jpeg
 ```
 
 ---
@@ -531,43 +531,43 @@ All screenshots below are captured from the actual Ubuntu terminal during the im
 
 Shows Ubuntu package updates and initial environment preparation.
 
-![Ubuntu Environment Setup](./results/00_ubuntu_update_and_gcc_openmp_setup.png)
+![Ubuntu Environment Setup](./results/00_ubuntu_update_and_gcc_openmp_setup.png.jpeg)
 
 ## 13.2 GCC Installation and OpenMP Verification
 
 Shows GCC installation, compiler version verification and OpenMP support verification.
 
-![GCC and OpenMP Verification](./results/01_gcc_installation_and_openmp_verification.png)
+![GCC and OpenMP Verification](./results/01_gcc_installation_and_openmp_verification.png.jpeg)
 
 ## 13.3 Environment Setup and Race/Critical Execution
 
 Shows Lab5 directory creation, program compilation and execution of race condition and critical section programs.
 
-![Environment and Execution](./results/02_environment_setup_and_race_critical_execution.png)
+![Environment and Execution](./results/02_environment_setup_and_race_critical_execution.png.jpeg)
 
 ## 13.4 Race Condition, Critical Section and Atomic Operation
 
 Shows the compilation and execution of race, critical and atomic synchronization programs.
 
-![Race Critical Atomic](./results/03_race_critical_atomic_execution.png)
+![Race Critical Atomic](./results/03_race_critical_atomic_execution.png.jpeg)
 
 ## 13.5 Barrier Synchronization Execution
 
 Shows thread execution before and after the barrier synchronization point.
 
-![Barrier Execution](./results/04_race_critical_atomic_barrier_execution.png)
+![Barrier Execution](./results/04_race_critical_atomic_barrier_execution.png.jpeg)
 
 ## 13.6 Semaphore Synchronization Execution
 
 Shows the execution of critical, atomic, barrier and semaphore programs, including the final semaphore counter.
 
-![Semaphore Execution](./results/05_critical_atomic_barrier_semaphore_execution.png)
+![Semaphore Execution](./results/05_critical_atomic_barrier_semaphore_execution.png.jpeg)
 
 ## 13.7 Final Performance Comparison
 
 Shows the final comparison of None, Critical, Atomic and Lock mechanisms using 1, 2, 4 and 8 threads.
 
-![Performance Comparison](./results/06_performance_comparison_1_2_4_8_threads.png)
+![Performance Comparison](./results/06_performance_comparison_1_2_4_8_threads.png.jpeg)
 
 ---
 

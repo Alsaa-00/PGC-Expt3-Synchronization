@@ -1,6 +1,6 @@
 <div align="center">
 
-# PGC LAB 5
+
 
 ## SYNCHRONIZATION MECHANISMS IN PARALLEL PROGRAMS
 
@@ -16,13 +16,13 @@
 
 <br>
 
-**Parallel Programming and Computing Laboratory**
+**PARALLEL PROGRAMMING AND COMPUTING LABORATORY**
 
 </div>
 
 ---
 
-# 1. Project Overview
+# 1. PROJECT OVERVIEW
 
 Synchronization is an essential concept in parallel programming where multiple threads execute simultaneously and access shared resources.
 
@@ -42,7 +42,7 @@ The primary objective is to understand how synchronization mechanisms maintain d
 
 ---
 
-# 2. Objectives
+# 2. OBJECTIVES
 
 1. Understand the importance of synchronization in parallel programming.
 2. Implement race conditions using shared variables.
@@ -54,7 +54,7 @@ The primary objective is to understand how synchronization mechanisms maintain d
 
 ---
 
-# 3. System Architecture
+# 3. SYSTEM ARCHITECTURE
 
 The experiment follows a shared-memory parallel programming architecture.
 
@@ -82,10 +82,10 @@ flowchart TD
     I --> J["Correctness Verification"]
     J --> K["Execution Time Analysis"]
 
-    style A fill:#58132b,color:#fff,stroke:#a34b6c
-    style G fill:#173b63,color:#fff,stroke:#4d91cf
-    style H fill:#176b50,color:#fff,stroke:#43b58a
-    style K fill:#58132b,color:#fff,stroke:#a34b6c
+    style A fill:#58132b,color:#fff
+    style G fill:#173b63,color:#fff
+    style H fill:#176b50,color:#fff
+    style K fill:#58132b,color:#fff
 ```
 
 ## 3.2 Synchronization Workflow
@@ -99,7 +99,7 @@ flowchart TD
 
 ---
 
-# 4. Synchronization Mechanisms Implemented
+# 4. SYNCHRONIZATION MECHANISMS IMPLEMENTED
 
 ## 4.1 Race Condition – No Synchronization
 
@@ -201,7 +201,7 @@ A semaphore is a synchronization mechanism used to control access to shared reso
 
 This experiment uses a binary semaphore with an initial value of 1.
 
-**Important functions:**
+**Important Functions:**
 
 | Function        | Purpose                   |
 | --------------- | ------------------------- |
@@ -253,7 +253,7 @@ The final counter is compared against the expected value of 10,000,000 to determ
 
 ---
 
-# 5. Program Execution Flow
+# 5. PROGRAM EXECUTION FLOW
 
 The following flowchart represents the general execution process followed by the comparison program.
 
@@ -279,7 +279,7 @@ flowchart TD
 
 ---
 
-# 6. Technology Stack
+# 6. TECHNOLOGY STACK
 
 | Technology         | Application                            |
 | ------------------ | -------------------------------------- |
@@ -293,7 +293,7 @@ flowchart TD
 
 ---
 
-# 7. Project Structure
+# 7. PROJECT STRUCTURE
 
 The repository is organized into source programs and execution results.
 
@@ -321,7 +321,7 @@ PGC-LAB5-SYNCHRONIZATION/
 
 ---
 
-# 8. Installation and Configuration
+# 8. INSTALLATION AND CONFIGURATION
 
 The experiment is implemented and executed in an Ubuntu Linux environment.
 
@@ -357,7 +357,7 @@ OpenMP OK
 
 ---
 
-# 9. Compilation and Execution
+# 9. COMPILATION AND EXECUTION
 
 The following commands are used to compile and execute the individual programs.
 
@@ -405,7 +405,7 @@ gcc compare_sync.c -fopenmp -o compare_sync
 
 ---
 
-# 10. Experimental Configuration
+# 10. EXPERIMENTAL CONFIGURATION
 
 The performance comparison program uses the following configuration.
 
@@ -427,7 +427,7 @@ The performance comparison program uses the following configuration.
 
 ---
 
-# 11. Performance Analysis
+# 11. PERFORMANCE ANALYSIS
 
 The following results are taken from the actual terminal execution of the comparison program.
 
@@ -502,7 +502,7 @@ xychart-beta
 
 ---
 
-# 12. Correctness and Scalability Analysis
+# 12. CORRECTNESS AND SCALABILITY ANALYSIS
 
 | Mechanism | Correctness                     | Relative Performance | Scalability      |
 | --------- | ------------------------------- | -------------------- | ---------------- |
@@ -523,7 +523,7 @@ xychart-beta
 
 ---
 
-# 13. Execution Screenshots
+# 13. EXECUTION SCREENSHOTS
 
 All screenshots below are captured from the actual Ubuntu terminal during the implementation and execution of the experiment.
 
@@ -571,7 +571,7 @@ Shows the final comparison of None, Critical, Atomic and Lock mechanisms using 1
 
 ---
 
-# 14. Conclusion
+# 14. CONCLUSION
 
 This experiment successfully demonstrates the implementation and analysis of different synchronization mechanisms in parallel programming.
 
@@ -595,6 +595,6 @@ Overall, this experiment provides practical understanding of thread synchronizat
 
 Parallel Programming and Computing Laboratory
 
-**End of Experiment**
+**END OF EXPERIMENT**
 
 </div>
